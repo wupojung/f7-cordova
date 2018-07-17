@@ -37,5 +37,28 @@ var app = new Framework7({
 
 // Init/Create main view
 var mainView = app.views.create('.view-main', {
+    on: {
+        pageInit: function () {
+            //每一次都call到
+            //console.log('page init')
+        }
+    },
     url: '/'
+});
+// 宣告變數
+var $$ = app.$;
+
+//參考文獻:  http://framework7.io/docs/page.html
+$$(document).on('page:init', function (e) {
+    // Do something here when page loaded and initialized
+    //console.log(e);
+    //console.log(e.detail.name);
+    switch (e.detail.name.toLowerCase()){
+        case "today":
+            console.log("今天");
+            break;
+        case "addresv":
+            console.log("訂位");
+            break;
+    };
 });
