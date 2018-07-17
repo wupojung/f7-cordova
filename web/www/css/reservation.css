@@ -1,0 +1,12 @@
+/*menu背景*/
+.menu-background {
+    background-image: url('../img/menu-bg.png');
+    width: 100px
+}
+
+/*menu label*/
+.menu-item-label {
+    margin-top: 0px;
+    font-size: large;
+    color: white;
+}
