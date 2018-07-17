@@ -1,0 +1,22 @@
+{
+  "appid": "com.example.test",
+  "displayName": "TestApp",
+  "name": "f7-cordova",
+  "version": "1.0.0",
+  "description": "Cordova Framework7 Packages",
+  "scripts": {
+    "browser": "gulp build-app",
+    "server": "gulp server"
+  },
+  "author": "wupojung@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "fs": "0.0.1-security",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-connect": "^5.5.0",
+    "gulp-open": "^3.0.1",
+    "gulp-shell": "^0.6.5",
+    "run-sequence": "^2.2.1"
+  }
+}
