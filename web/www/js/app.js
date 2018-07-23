@@ -66,6 +66,8 @@ $$(document).on('page:init', function (e) {
 });
 
 function processToday() {
+    Debug.enter('processToday.constructor');
+
     // Dummy items array
     var items = [];
     for (var i = 1; i <= 10000; i++) {
@@ -102,5 +104,5 @@ function processToday() {
         // Item height
         height: app.theme === 'ios' ? 63 : 73,
     });
-
+    Debug.leave();
 }
