@@ -1,19 +1,190 @@
 <div class="page" data-name="addResv">
-  <div class="navbar">
-    <div class="navbar-inner sliding">
-      <div class="left">
-        <!--<a href="#" class="link back">-->
-        <!--<i class="icon icon-back"></i>-->
-        <!--<span class="ios-only">Back</span>-->
-        <!--</a>-->
-      </div>
-      <div class="title">訂位</div>
+
+    <style>
+        /*period_row*/
+        .period_panel > .row {
+            padding: 5px;
+        }
+
+        /*period_item*/
+        .period_panel > .row > * {
+            background-color: #ff9500;
+            height: 5vw ! important;
+            line-height: 0.000001vw ! important; /*行距無限小*/
+            /*padding-top: 1vh ! important;*/
+            padding-bottom: 6vw !important;
+            font-size: 2vw;
+        }
+
+        .period_selected {
+            border-color: red ! important;
+            border-width: thick !important;
+        }
+
+        /*tag_panel*/
+        .tag_panel > .row > * {
+            padding-bottom: 3vw !important;
+            font-size: 2vw;
+        }
+
+        .empty {
+            background-color: #ffffff ! important;
+        }
+    </style>
+
+    <div class="page-content">
+        <div class="card">
+            <div class="card-header">
+                <!--<i class="icon icon-back "></i>2018/06<i class="icon icon-forward "></i>-->
+                訂位-新增
+            </div>
+            <div class="card-content card-content-padding">
+                <div class="row">
+                    <!--左邊日曆-->
+                    <div class="col-40">
+                        <div class="block block-strong no-padding">
+                            <div id="demo-calendar-inline-container"></div>
+                        </div>
+                        <div class="period_panel" id="period_panel">
+                            <div class="row">
+                                <a class="button col-33">12:00<br/>60P</a>
+                                <a class="button col-33 period_selected">12:00<br/>60P</a>
+                                <a class="button col-33">12:00<br/>60P</a>
+                            </div>
+                            <div class="row">
+                                <a class="button col-33">12:00<br/>60P</a>
+                                <a class="button col-33">12:00<br/>60P</a>
+                                <div class="block col-33 empty"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--右邊詳細資料-->
+                    <div class="col-60">
+                        <div>
+                            <form class="list form-store-data" id="detail_form" onclick="return 0;">
+                                <ul>
+                                    <li>
+                                        <div class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">姓名</div>
+                                                <div class="item-input-wrap">
+                                                    <input class="no-store-data" type="text" name="Name" id="Name" placeholder="請輸入姓名">
+                                                </div>
+                                            </div>
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">稱謂</div>
+                                                <div class="item-input-wrap">
+                                                    <label class="radio"><input type="radio" class="no-store-data" name="Gender" value="M"><i class="icon-radio"></i></label>先生　　
+                                                    <label class="radio"><input type="radio" class="no-store-data" name="Gender" value="F"><i class="icon-radio"></i></label>小姐
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">手機號碼</div>
+                                                <div class="item-input-wrap">
+                                                    <input class="no-store-data" type="text" name="Mobile" id="Mobile" placeholder="手機號碼">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">人數</div>
+                                                <div class="item-input-wrap row">
+                                                    <input class="no-store-data" type="number" name="QtyAdult" id="QtyAdult" placeholder="大人">
+                                                </div>
+                                            </div>
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">小孩</div>
+                                                <div class="item-input-wrap row">
+                                                    <input class="no-store-data" type="number" name="QtyChild" id="QtyChild"  placeholder="小孩">
+                                                </div>
+                                            </div>
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">兒童椅</div>
+                                                <div class="item-input-wrap row">
+                                                    <input class="no-store-data" type="number" name="QtyChildChair" id="QtyChildChair"  placeholder="兒童椅">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">其他需求</div>
+                                                <div class="item-input-wrap tag_panel">
+                                                    <div class="row">
+                                                        <a class="button button-fill col-20">AA</a>
+                                                        <a class="button col-20">AA</a>
+                                                        <a class="button col-20">AA</a>
+                                                        <a class="button col-20">AA</a>
+                                                        <a class="button col-20">AA</a>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <a class="button col-20">AA</a>
+                                                        <a class="button col-20">AA</a>
+                                                        <a class="button col-20">AA</a>
+                                                        <a class="button col-20">AA</a>
+                                                        <div class="col-20"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">備註</div>
+                                                <div class="item-input-wrap">
+                                                    <textarea class="resizable" name="Memo" id="Memo" placeholder="請輸入備註"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+
+                                    </li>
+                                </ul>
+                            </form>
+                            <div class="item-content row" style="padding-right: 15px;">
+                                <button id="btnSave" class="col button button-big button-fill color-blue">存檔</button>
+                                <button class="col button button-big button-fill color-gray">取消</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">訂位記錄</div>
+                            <div class="card-content list" id="history">
+                                <ul>
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="item-inner">
+                                                <div class="item-title">2018/06/30 13:00 王品中港店</div>
+                                                <div class="item-after"><i class="f7-icons">check_round</i></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="item-inner">
+                                                <div class="item-title">2018/03/30 13:00 王品中港店</div>
+                                                <div class="item-after"><i class="f7-icons">close_round</i></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div><!--end for card-->
     </div>
-  </div>
-  <div class="page-content">
-    <div class="block block-strong">
-      <p>這是今天的頁面</p>
-      <p>Requested content not found.</p>
-    </div>
-  </div>
 </div>

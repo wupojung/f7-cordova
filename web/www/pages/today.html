@@ -1,17 +1,79 @@
-<style>
-    .demo-card-header-pic .card-header {
-        height: 40vw;
-        background-size: cover;
-        background-position: center;
-        color: #fff;
-    }
-
-    .demo-card-header-pic .card-content-padding .date {
-        color: #8e8e93;
-    }
-</style>
 <div class="page color-theme-gray" data-name="today">
+    <style>
+        .demo-card-header-pic .card-header {
+            height: 40vw;
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
 
+        .demo-card-header-pic .card-content-padding .date {
+            color: #8e8e93;
+        }
+
+        .card > .card-content {
+            padding-left: 1vw;
+            padding-right: 1vw;
+        }
+
+        .card > div > div > * {
+            font-size: 2vw;
+        }
+
+        .card > div > div > div > .startHour {
+            text-align: center;
+            line-height: 6vw;
+            width: 30%;
+            background-color: red;
+        }
+
+        .card > div > div > div > .info {
+            line-height: 0.1vh !important;
+            width: 70%;
+            background-color: yellow;
+        }
+
+        .resv_tags {
+            width: 40%;
+            /*display: inherit;*/
+            line-height: 8vh;
+            background-color: #FDFDFD;
+        }
+
+        .resv_tags > .chip{
+            font-size: 3vw;
+            height: 4vw;
+            line-height: 3vw;
+        }
+
+        .resv_qty {
+            /*width: 10%;*/
+            display: inherit;;
+            padding: 2px;
+            font-size: 2vw;
+        }
+
+        .resv_func {
+            width: 45%;
+            display: inherit;
+            padding: 1.5vh;
+        }
+
+        .resv_func > * {
+            font-size: 2vw !important;
+            height: 4vw !important;
+        }
+
+        .resv_func_btn {
+            /* width: 5%;*/
+            display: inherit;
+            /*padding: 2px;*/
+            /*font-size: 40px !important;*/
+            font-size: 4vw !important;
+        }
+
+
+    </style>
     <div class="page-content">
         <div class="list simple-list searchbar-not-found">
             <ul>
@@ -24,9 +86,9 @@
         <div class="card">
             <div class="card-header">
                 <div class="row" style="width: 100%;">
-                    <div class="col-20">06/01(三)</div>
+                    <div class="col-20" id="today_tag">06/01(三)</div>
                     <div class="col-30">09-12345678</div>
-                    <div class="col-30">顯示 <input type="text" placeholder="1" style="display:initial;width:50px;"> 小時的清單
+                    <div class="col-30">顯示 <input id="hour_range" type="text" placeholder="0" style="display:initial;width:50px;"> 小時的清單
                     </div>
                     <div class="col-20"><label class="checkbox"><input type="checkbox"><i
                             class="icon-checkbox"></i></label>顯示隱藏
@@ -35,42 +97,39 @@
             </div>
             <div class="card-content card-content-padding">
                 <!-- Card content -->
-                <div class="list media-list">
+                <div class="list media-list" id="list_data">
                     <ul>
-                        <li>
-                            <div class="card ">
-                                <div class="card-content ">
-                                    <div class="row">
-                                        <div class="col-30" style="display:inherit">
-                                            <div class="block" style="font-size: 20px;">11:00</div>
-                                            <div class="block" style="font-size: 20px;">王先生</div>
-                                            <div class="block" style="font-size: 20px;">0955060638</div>
+                        <li id="{tttpkey}">
+                            <div class="card">
+                                <div class="card-content row">
+                                    <div class="col-30" style="display:inherit">
+                                        <div class="row" style="width: 100%">
+                                            <div class="startHour">11:00</div>
+                                            <div class="info"><p>王先生</p>
+                                                <p>0955060638</p></div>
                                         </div>
 
-                                        <div class="col-70">
-                                            <div class="row">
-                                                <div class="col-10">
-                                                    <i class="f7-icons">social_facebook </i>
-                                                </div>
-                                                <div class="col-30" style="display:inherit">
-                                                    <button class="button button-fill button-big">入桌</button>
-                                                    <button class="button button-fill button-big">已買單</button>
-                                                </div>
+                                    </div>
+                                    <div class="col-70">
+                                        <div class="row">
 
-                                                <div class="col-20" style="display:inherit">
-                                                    <i class="f7-icons">phone</i>
-                                                    <i class="f7-icons">eye</i>
-                                                </div>
+                                            <div class="resv_qty">
+                                                <p>3大1小</p>
+                                            </div>
 
-                                                <div class="col-100">
-                                                    <div class="chip">
-                                                        <div class="chip-label">慶生</div>
-                                                        <a href="#" class="chip-delete"></a>
-                                                    </div>
+                                            <div class="resv_tags">
+                                                <div class="chip">
+                                                    <div class="chip-label">慶生</div>
                                                 </div>
                                             </div>
 
-
+                                            <div class="resv_func">
+                                                <button class="button button-fill button-big" onclick="TodayServices.ShowTable('tttpkey')">入桌</button>
+                                                <i class="f7-icons resv_func_btn">social_facebook </i>
+                                                <button class="button button-fill button-big">已買單</button>
+                                                <img class="resv_func_btn" src="img/sms.png" onclick="TodayServices.SMS('{tttpkey}')"/>
+                                                <img class="resv_func_btn" src="img/invisible.png" onclick="TodayServices.SetHide('tttpkey')"/>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -78,39 +137,36 @@
                             </div>
                         </li>
                         <li>
-                            <div class="card ">
-                                <div class="card-content ">
-                                    <div class="row">
-                                        <div class="col-30" style="display:inherit">
-                                            <div class="block" style="font-size: 20px;">11:00</div>
-                                            <div class="block" style="font-size: 20px;">王先生</div>
-                                            <div class="block" style="font-size: 20px;">0955060638</div>
+                            <div class="card">
+                                <div class="card-content row">
+                                    <div class="col-30" style="display:inherit">
+                                        <div class="row" style="width: 100%">
+                                            <div class="startHour">11:00</div>
+                                            <div class="info"><p>王先生</p>
+                                                <p>0955060638</p></div>
                                         </div>
 
-                                        <div class="col-70">
-                                            <div class="row">
-                                                <div class="col-10">
-                                                    <i class="f7-icons">social_facebook </i>
-                                                </div>
-                                                <div class="col-30" style="display:inherit">
-                                                    <button class="button button-fill button-big">入桌</button>
-                                                    <button class="button button-fill button-big">已買單</button>
-                                                </div>
+                                    </div>
+                                    <div class="col-70">
+                                        <div class="row">
 
-                                                <div class="col-20" style="display:inherit">
-                                                    <i class="f7-icons">phone</i>
-                                                    <i class="f7-icons">eye</i>
-                                                </div>
+                                            <div class="resv_qty">
+                                                <p>3大1小</p>
+                                            </div>
 
-                                                <div class="col-100">
-                                                    <div class="chip">
-                                                        <div class="chip-label">慶生</div>
-                                                        <a href="#" class="chip-delete"></a>
-                                                    </div>
+                                            <div class="resv_tags">
+                                                <div class="chip">
+                                                    <div class="chip-label">慶生</div>
                                                 </div>
                                             </div>
 
-
+                                            <div class="resv_func">
+                                                <button class="button button-fill button-big ">入桌</button>
+                                                <i class="f7-icons resv_func_btn">social_facebook </i>
+                                                <button class="button button-fill button-big ">已買單</button>
+                                                <img class="resv_func_btn" src="img/sms.png" id="btnSMS"/>
+                                                <img class="resv_func_btn" src="img/invisible.png" id="btnHide"/>
+                                            </div>
                                         </div>
 
                                     </div>
